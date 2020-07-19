@@ -25,6 +25,16 @@ class DiscoverScreen extends React.Component {
     }  
 }  
 
+class Inbox extends React.Component {  
+  render() {  
+      return (
+        <View style={styles.container}>  
+            <Text>InboxScreen</Text>  
+        </View>
+      );  
+  }  
+}  
+
 class openCamera extends React.Component {  
   render() {  
       return (  
@@ -40,15 +50,6 @@ class openCamera extends React.Component {
   }  
 }
 
-class NotificationScreen extends React.Component {  
-  render() {  
-      return (  
-          <View style={styles.container}>  
-              <Text>Notifications Screen</Text>  
-          </View>  
-      );  
-  }  
-}
 
 class Me extends React.Component {  
   render() {  
@@ -152,13 +153,110 @@ class Me extends React.Component {
   }  
 }  
   
-const TabNavigator = createBottomTabNavigator({  
-    Home: HomeScreen,  
-    Discover: DiscoverScreen,
-    Camera: openCamera,
-    Notifications: NotificationScreen,
-    Me: Me,   
-});  
+const TabNavigator = createBottomTabNavigator(
+  {  
+    // Home: HomeScreen,  
+    // Discover: DiscoverScreen,
+    // Camera: openCamera,
+    // Me: Me,   
+
+    Home: { screen: HomeScreen },
+    Discover: { screen: DiscoverScreen },
+    " " : { screen: openCamera },
+    Inbox: { screen: Inbox },
+    Me: { screen: Me },
+
+},
+{
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      const { routeName } = navigation.state;
+      if (routeName === 'Home') {
+        return (
+          <Image
+            source={
+              focused
+                ? require('./Assets/home.png')
+                : require('./Assets/home.png')
+            }
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 40 / 2,
+            }}
+          />
+        );
+      } else if (routeName === 'Discover') {
+        return (
+          <Image
+            source={
+              focused
+                ? require('./Assets/search.png')
+                : require('./Assets/search.png')
+            }
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 40 / 2,
+            }}
+          />
+        );
+      }  else if (routeName === ' ') {
+        return (
+          <Image
+            source={
+              focused
+                ? require('./Assets/add.png')
+                : require('./Assets/add.png')
+            }
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 40 / 2,
+            }}
+          />
+        );
+      }  else if (routeName === 'Me') {
+        return (
+          <Image
+            source={
+              focused
+                ? require('./Assets/me.png')
+                : require('./Assets/me.png')
+            }
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 40 / 2,
+            }}
+          />
+        );
+      }
+      else if (routeName === 'Inbox') {
+        return (
+          <Image
+            source={
+              focused
+                ? require('./Assets/notification.png')
+                : require('./Assets/notification.png')
+            }
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 40 / 2,
+            }}
+          />
+        );
+      }
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: 'blue',
+    inactiveTintColor: 'gray',
+  },
+}
+
+);  
 const styles = StyleSheet.create({  
     container: {  
         flex: 1,  
