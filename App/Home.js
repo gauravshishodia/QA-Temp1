@@ -280,4 +280,10 @@ const styles = StyleSheet.create({
 });  
   
 // export default createAppContainer(TabNavigator);
-export default TabNavigator;
+// export default TabNavigator;
+const AppContainer = createAppContainer(TabNavigator);  
+export default class App extends React.Component {  
+    render() {  
+        return <AppContainer />;  
+    }  
+}  
