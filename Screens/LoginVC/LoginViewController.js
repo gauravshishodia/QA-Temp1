@@ -17,7 +17,7 @@ export default class LoginViewController extends React.Component {
                     <TextInput style={style.textfiledInput} placeholder="Password"></TextInput>
                     <View style={style.buttonContainer}>
                         <TouchableOpacity style={style.loginButton} onPress={() => {
-                            this.props.navigation.navigate('Home')
+                            this.props.navigation.navigate('HomeView')
                         }}>
 
 
