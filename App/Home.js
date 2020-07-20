@@ -279,4 +279,5 @@ const styles = StyleSheet.create({
     }  
 });  
   
-export default createAppContainer(TabNavigator);
+// export default createAppContainer(TabNavigator);
+export default TabNavigator;
