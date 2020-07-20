@@ -1,12 +1,10 @@
 import React from 'react';  
 import { StyleSheet, Text, View, Image, ScrollView,SafeAreaView, Dimensions } from 'react-native';  
-import { createAppContainer } from 'react-navigation';  
-import { createBottomTabNavigator } from 'react-navigation-tabs';    
-import { Button } from 'react-native-paper';
-import { RNCamera } from 'react-native-camera'
+import  RNCamera  from 'react-native-camera'
 import VideoPlayer from './videoPlay'
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-class HomeScreen extends React.Component {  
+export class HomeScreen extends React.Component {  
     render() {  
         return (  
             <View style={{flex: 1}}>  
@@ -15,7 +13,7 @@ class HomeScreen extends React.Component {
         );  
     }  
 }  
-class DiscoverScreen extends React.Component {  
+export class DiscoverScreen extends React.Component {  
     render() {  
         return (
           <View style={styles.container}>  
@@ -25,7 +23,7 @@ class DiscoverScreen extends React.Component {
     }  
 }  
 
-class Inbox extends React.Component {  
+export  class Inbox extends React.Component {  
   render() {  
       return (
         <View style={styles.container}>  
@@ -35,7 +33,7 @@ class Inbox extends React.Component {
   }  
 }  
 
-class openCamera extends React.Component {  
+export class openCamera extends React.Component {  
   render() {  
       return (  
           <View style={styles.container2}>
@@ -51,7 +49,7 @@ class openCamera extends React.Component {
 }
 
 
-class Me extends React.Component {  
+export class Me extends React.Component {  
   render() {  
       return (  
         <SafeAreaView>
@@ -155,17 +153,11 @@ class Me extends React.Component {
   
 const TabNavigator = createBottomTabNavigator(
   {  
-    // Home: HomeScreen,  
-    // Discover: DiscoverScreen,
-    // Camera: openCamera,
-    // Me: Me,   
-
     Home: { screen: HomeScreen },
     Discover: { screen: DiscoverScreen },
     " " : { screen: openCamera },
     Inbox: { screen: Inbox },
     Me: { screen: Me },
-
 },
 {
   defaultNavigationOptions: ({ navigation }) => ({
