@@ -11,7 +11,7 @@ class DiscoverScreen2 extends React.Component {
     render() {  
         return (
           <View style={styles.container}>  
-              <Text>Notifications Screen</Text>  
+              <Text>Discover Screen</Text>  
           </View>
         );  
     }  

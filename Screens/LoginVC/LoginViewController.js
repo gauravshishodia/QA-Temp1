@@ -1,50 +1,93 @@
-
-
-
 import 'react-native-gesture-handler';
 import React, { Component } from 'react'
-import { ImageBackground, StyleSheet, View, Text, TextInput, TouchableOpacity, Image, } from 'react-native'
+import { ImageBackground, StyleSheet, View, Text, TextInput, TouchableOpacity, Image, Alert } from 'react-native'
+
+
 
 
 export default class LoginViewController extends React.Component {
+    _onPress() {
+        Alert.alert(
+            '',
+            'Are you sure you want to login?',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ],
+            { cancelable: false }
+        )
+    }
+
+    googleOnPress() {
+        Alert.alert("Sorry you don't have google account!");
+       }
+
+       facebookOnPress() {
+        Alert.alert("Sorry you don't have facebok account!");
+       }
+
+       twitterOnPress() {
+        Alert.alert("Sorry you don't have twitter account!");
+       }
+
+       constructor(props) {
+        super(props);
+        this.state = {
+          usersName: '',
+          usersPassword: '',
+        };
+      }
+      CheckTextInput = () => {
+        //Handler for the Submit onPress
+        if (this.state.usersName != '') {
+          //Check for the Name TextInput
+          if (this.state.usersPassword != '') {
+            //Check for the Email TextInput
+           // alert('Success')
+           this.props.navigation.navigate("Home")
+          } else {
+            alert('Please enter password!');
+          }
+        } else {
+          alert('Please enter user name!');
+        }
+      };
+
     render() {
         const navigation = this.props.navigation
         return (
-            <ImageBackground source={require('../../assets/tikTok.jpg')} style={style.backgroundContainer}>
+            <ImageBackground style={style.backgroundContainer}>
                 <View style={style.container}>
                     <Text style={style.welcome}>Welcome</Text>
-                    <TextInput style={style.textfiledInput} placeholder="Username"></TextInput>
-                    <TextInput style={style.textfiledInput} placeholder="Password"></TextInput>
+                    <TextInput style={style.textfiledInput} placeholder="Username" onChangeText={usersName => this.setState({ usersName })}/> 
+                    <TextInput style={style.textfiledInput} placeholder="Password" onChangeText={usersPassword => this.setState({ usersPassword })}/>
                     <View style={style.buttonContainer}>
-                        <TouchableOpacity style={style.loginButton} onPress={() => {
-                            this.props.navigation.navigate("Home")
-                        }}>
-
+                        <TouchableOpacity style={style.loginButton} onPress={this.CheckTextInput}>
 
                             <Text style={style.loginButtonText}>Log in</Text>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={{ width: "80%", height: 50, padding: 15, marginTop: 10, flexDirection: "row", justifyContent: "space-between", backgroundColor: "white" }}>
-                        <Text style={{ color: "gray", fontSize: 20 }}>
-                            <Image style={style.facebookIcon} source={require('../../assets/google.png')} />
-                                 Sign up using Google
-                             </Text>
+                    <TouchableOpacity style={{ width: "80%", height: 50, padding: 15, marginTop: 10, flexDirection: "row", justifyContent: "space-between", backgroundColor: "white", borderRadius: 30 }} onPress={this.googleOnPress}>
+                        <View style={style.bottomButtonsContainer}>
+                            <Image style={style.bottomButtonsIcon} source={require('../../assets/google.png')} />
+                            <Text style={style.googleButtonsText}> {" "}Sign up using Google</Text>
+                        </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ width: "80%", height: 50, padding: 15, marginTop: 10, flexDirection: "row", justifyContent: "space-between", backgroundColor: '#365390' }}>
-                        <Text style={style.facebookText}>
-                            <Image style={style.facebookIcon} source={require('../../assets/facebook.png')} />
-                                Sign up using Facebook
-                             </Text>
+                    <TouchableOpacity style={{ width: "80%", height: 50, padding: 15, marginTop: 10, flexDirection: "row", justifyContent: "space-between", backgroundColor: '#365390', borderRadius: 30 }} onPress={this.facebookOnPress}>
+                        <View style={style.bottomButtonsContainer}>
+                            <Image style={style.bottomButtonsIcon} source={require('../../assets/facebook.png')} />
+                            <Text style={style.bottomButtonsText}>{"      "}Sign up using Facebook</Text>
+                        </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ width: "80%", height: 50, padding: 15, marginTop: 10, flexDirection: "row", justifyContent: "space-between", backgroundColor: '#6BAAF3' }}>
-                        <Text style={style.facebookText}>
-                            <Image style={style.facebookIcon} source={require('../../assets/twitter.png')} />
-                                Sign up using Twitter
-                             </Text>
+                    <TouchableOpacity style={{ width: "80%", height: 50, padding: 15, marginTop: 10, flexDirection: "row", justifyContent: "space-between", backgroundColor: '#6BAAF3', borderRadius: 30 }} onPress={this.twitterOnPress}>
+                        <View style={style.bottomButtonsContainer}>
+                            <Image style={style.bottomButtonsIcon} source={require('../../assets/twitter.png')} />
+                            <Text style={style.bottomButtonsText}>Sign up using Twitter</Text>
+                        </View>
                     </TouchableOpacity>
                     <View>
                         <TouchableOpacity style={{ width: "80%", height: 50, marginTop: 70 }} onPress={() => navigation.navigate("SignUp")}>
-                            <Text style={style.facebookText}>Don't have an account?  Sign up </Text>
+                            <Text style={{ flex: 1, color: 'black', fontSize: 20, justifyContent: 'center', textAlign: 'center', }}>Don't have an account?  Sign up </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -74,22 +117,22 @@ const style = StyleSheet.create({
     welcome: {
         fontSize: 30,
         textAlign: "center",
-
-        marginBottom: 100,
+        marginBottom: 50,
         color: "#fff",
 
     },
     textfiledInput: {
         width: "90%",
         backgroundColor: "#fff",
-        padding: 15,
-        marginBottom: 15
+        padding: 18,
+        marginBottom: 20,
+        borderRadius: 25
     },
     buttonContainer: {
         flexDirection: "row"
     },
     loginButton: {
-        backgroundColor: "gray",
+        backgroundColor: "black",
         opacity: 1,
         padding: 15,
         width: "60%",
@@ -101,28 +144,44 @@ const style = StyleSheet.create({
         textAlign: "center",
         color: "white"
     },
-    facebookButton: {
-        height: 55,
-        width: "80%",
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        backgroundColor: '#365390',
-        marginBottom: 10
-    },
-    facebookText: {
+    bottomButtonsContainer: {
         flex: 1,
-        color: '#fff',
-        fontSize: 20,
-        justifyContent: 'center',
-        textAlign: 'center',
+        backgroundColor: "transparent",
+        //paddingHorizontal: 50,
+        //paddingVertical: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderRadius: 5,
+        // height: 30,
+        // position: 'absolute'
     },
-    facebookIcon: {
-        marginTop: 10,
-        alignItems: "center",
+    bottomButtonsIcon: {
+        //transform: [{ rotate: '180deg'}],
         width: 30,
         height: 30,
-        justifyContent: 'center',
-    }
+        position: 'absolute',
+        left: 18,
+    },
+    bottomButtonsText: {
+        textAlign: 'center',
+        //fontWeight: 'bold',
+        fontSize: 20,
+        color: 'white',
+        height: '100%',
+        width: '100%',
+        paddingBottom: 25
+    },
+    googleButtonsText: {
+        textAlign: 'center',
+        //fontWeight: 'bold',
+        fontSize: 20,
+        color: 'gray',
+        height: '100%',
+        width: '100%',
+        paddingBottom: 25
+    },
+
 })
+
 
 
