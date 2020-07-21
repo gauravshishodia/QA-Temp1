@@ -1,11 +1,5 @@
 import React from 'react';  
-import { StyleSheet, Text, View, Image, ScrollView,SafeAreaView, Dimensions } from 'react-native';  
-import { createAppContainer } from 'react-navigation';  
-import { createBottomTabNavigator } from 'react-navigation-tabs';    
-import { Button } from 'react-native-paper';
-// import { RNCamera } from 'react-native-camera'
-// import VideoPlayer from './videoPlay'
-
+import { StyleSheet, Text, View, Image, ScrollView,SafeAreaView, Dimensions } from 'react-native';
 
 class DiscoverScreen2 extends React.Component {  
     render() {  
@@ -23,19 +17,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 10,  
     },
-    videoNumberView: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'lightgray',
-      width: 70,
-      height: 30,
-      borderRadius: 15,
-      marginTop: 20
-    },
-    container2: {
-      flex: 1,
-      flexDirection: 'column',
-      backgroundColor: 'black'
-    }  
 });
 export default DiscoverScreen2;

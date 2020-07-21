@@ -1,9 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react'
-import { ImageBackground, StyleSheet, View, Text, TextInput, TouchableOpacity, Image, Alert } from 'react-native'
-
-
-
+import { ImageBackground, StyleSheet, View, Text, TextInput, TouchableOpacity, Image, Alert, ScrollView } from 'react-native'
 
 export default class LoginViewController extends React.Component {
     _onPress() {
@@ -38,12 +35,8 @@ export default class LoginViewController extends React.Component {
         };
       }
       CheckTextInput = () => {
-        //Handler for the Submit onPress
         if (this.state.usersName != '') {
-          //Check for the Name TextInput
           if (this.state.usersPassword != '') {
-            //Check for the Email TextInput
-           // alert('Success')
            this.props.navigation.navigate("Home")
           } else {
             alert('Please enter password!');
@@ -57,6 +50,7 @@ export default class LoginViewController extends React.Component {
         const navigation = this.props.navigation
         return (
             <ImageBackground style={style.backgroundContainer}>
+                <ScrollView>
                 <View style={style.container}>
                     <Text style={style.welcome}>Welcome</Text>
                     <TextInput style={style.textfiledInput} placeholder="Username" onChangeText={usersName => this.setState({ usersName })}/> 
@@ -91,12 +85,11 @@ export default class LoginViewController extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+                </ScrollView>
             </ImageBackground>
         )
     }
 }
-
-
 
 const style = StyleSheet.create({
     backgroundContainer: {
@@ -147,16 +140,11 @@ const style = StyleSheet.create({
     bottomButtonsContainer: {
         flex: 1,
         backgroundColor: "transparent",
-        //paddingHorizontal: 50,
-        //paddingVertical: 20,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 5,
-        // height: 30,
-        // position: 'absolute'
     },
     bottomButtonsIcon: {
-        //transform: [{ rotate: '180deg'}],
         width: 30,
         height: 30,
         position: 'absolute',
@@ -164,7 +152,6 @@ const style = StyleSheet.create({
     },
     bottomButtonsText: {
         textAlign: 'center',
-        //fontWeight: 'bold',
         fontSize: 20,
         color: 'white',
         height: '100%',
@@ -173,7 +160,6 @@ const style = StyleSheet.create({
     },
     googleButtonsText: {
         textAlign: 'center',
-        //fontWeight: 'bold',
         fontSize: 20,
         color: 'gray',
         height: '100%',

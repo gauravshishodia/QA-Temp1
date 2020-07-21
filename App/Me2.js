@@ -1,12 +1,5 @@
 import React from 'react';  
-import { StyleSheet, Text, View, Image, ScrollView,SafeAreaView, Dimensions } from 'react-native';  
-import { createAppContainer } from 'react-navigation';  
-import { createBottomTabNavigator } from 'react-navigation-tabs';    
-import { Button } from 'react-native-paper';
-// import { RNCamera } from 'react-native-camera'
-import VideoPlayer from './videoPlay'
-
-
+import { StyleSheet, Text, View, Image, ScrollView,SafeAreaView, Dimensions } from 'react-native';
 
 class Me2 extends React.Component {  
     render() {  

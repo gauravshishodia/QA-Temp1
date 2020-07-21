@@ -80,7 +80,5 @@ const styles = StyleSheet.create({
         height: 44,  
     },  
 })  
-  
-  
 // AppRegistry.registerComponent('AwesomeProject', () => Inbox2); 
 
