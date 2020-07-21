@@ -25,7 +25,7 @@ class Me2 extends React.Component {
   
               
           <View style = {{alignItems: 'center', justifyContent: 'center' ,width: Dimensions.get('window').width / 2}}>
-          <Text style = {{fontSize : 20, marginBottom: 10, fontWeight: 'bold'}}>user1269</Text>
+          <Text style = {{fontSize : 20, marginBottom: 10, fontWeight: 'bold'}}>QAIT</Text>
           </View>
   
             
@@ -44,10 +44,10 @@ class Me2 extends React.Component {
   
               </View>
             <View style = {{width: 500, height: 1, backgroundColor: 'lightgray', marginBottom: 15}}/>
-              <Image source={require('./Assets/profileImage.png')}
-     style = {{ width: 150, height: 150 }}
+              <Image source={require('./Assets/Qait.jpeg')}
+     style = {{ width: 150, height: 150, borderRadius: 75 }}
      />  
-                <Text style = {{fontSize : 20, marginTop: 1, fontWeight: 'bold'}}>@user1269</Text>
+                <Text style = {{fontSize : 20, marginTop: 1, fontWeight: 'bold'}}>@qainfotech</Text>
                 <View style={styles.videoNumberView}>
                     <Text style = {{color: 'darkgray'}}>0 Video</Text>
                 </View>
@@ -120,7 +120,7 @@ class Me2 extends React.Component {
     videoNumberView: {
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'lightgray',
+      backgroundColor: 'white',
       width: 70,
       height: 30,
       borderRadius: 15,
